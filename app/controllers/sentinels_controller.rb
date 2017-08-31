@@ -1,5 +1,6 @@
 class SentinelsController < ApplicationController
   before_action :set_sentinel, only: [:show, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   # GET /sentinels
   def index
@@ -36,6 +37,7 @@ class SentinelsController < ApplicationController
   # DELETE /sentinels/1
   def destroy
     @sentinel.destroy
+    render json: { message: 'Sentinel destroyed' }
   end
 
   private
@@ -45,7 +47,8 @@ class SentinelsController < ApplicationController
     end
 
     # Only allow a trusted parameter "white list" through.
+    # "skills": ["Fighting", "Running", "Algorithm Cracking"]
     def sentinel_params
-      params.require(:sentinel).permit(:name, :code, :skills, :group)
+      params.require(:sentinel).permit(:name, :code, :group, :skills => [])
     end
 end

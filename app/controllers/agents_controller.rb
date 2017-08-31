@@ -1,5 +1,6 @@
 class AgentsController < ApplicationController
   before_action :set_agent, only: [:show, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   # GET /agents
   def index
@@ -36,6 +37,7 @@ class AgentsController < ApplicationController
   # DELETE /agents/1
   def destroy
     @agent.destroy
+    render json: { message: 'Agent down' }
   end
 
   private
@@ -46,6 +48,6 @@ class AgentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def agent_params
-      params.require(:agent).permit(:name, :code, :skills)
+      params.require(:agent).permit(:name, :code, :skills => [])
     end
 end
