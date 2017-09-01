@@ -8,4 +8,4 @@
 
 Agent.create([ { name: 'john', code: 'JO-12312', skills: ['fighting','running'] }, { name: 'smith', code: 'SM-12312', skills: ['fighting','shooting'] } ])
 
-Sentinel.create([ { name: 'rojarous', code: 'RO-12312', group: 'A', skills: ['hacking','injecting'] }, { name: 'lezarus', code: 'SM-12312', group: 'A', skills: ['nicking','shooting'] } ])
+Sentinel.create([ { name: 'rojarous', code: 'RO-12312', group: 'A', skills: ['hacking','injecting'] }, { name: 'lezarus', code: 'SM-12312', group: 'A', skills: ['nicking','shooting'] } ]) 
